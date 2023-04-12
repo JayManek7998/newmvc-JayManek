@@ -1,0 +1,45 @@
+<?php
+$admins = $this->getAdmin()['admin'];
+?>
+<form action="<?php echo $this->getUrl('save'); ?>" method="post">
+	<br/>
+	<br/>
+	<table class="add-header">
+		<tr align="center">
+			<td><h2>ADMIN INFORMATION</h2></td>
+		</tr>
+	</table>
+	<br/>
+	<br/>
+	<table class="add-data-table" align="center">
+		<tr>
+			<td>Name</td>
+			<td><input type="text" name="admins[name]" value="<?php echo $admins->name; ?>"></td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td><input type="text" name="admins[email]" value="<?php echo $admins->email; ?>"></td>
+		</tr>
+		<tr>
+			<td>Password</td>
+			<td><input type="password" name="admins[password]" value="<?php echo $admins->password; ?>"></td>
+		</tr>
+		<tr>
+			<td>Status</td>
+			<td>
+				<select name="admins[status]">
+					<?php foreach ($admins->getStatusOptions() as $key => $value) : ?>
+					<?php $selected = ($key == $admins->getStatus()) ? "selected" : ''; ?>
+					<option value="<?php echo $key; ?>" <?php echo $selected;?>><?php echo $value; ?></option>
+					<?php endforeach; ?>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2"><button><a href="<?php echo $this->getUrl('grid', null, [], true); ?>">Cancel</a></button>
+			<button type="submit">Submit</button></td>
+		</tr>
+	</table>
+</form>
+</body>
+</html>

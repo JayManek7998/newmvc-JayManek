@@ -1,0 +1,42 @@
+<?php
+$categories = $this->categories;
+?>
+
+	<br/>
+	<br/>
+	<table class="manage-table" border="1px">
+		<tr align="center">
+			<td width="70%">MANAGE CATEGORY</td>
+			<td><button><a href="<?php echo $this->getUrl('add', null , [], true);?>" style="text-decoration: none;">ADD CATEGORY</a></button></td>
+		</tr>
+	</table>
+	<br/>
+	<br/>
+	<table class="grid-table" border="1px">
+		<tr align="center">
+			<th>Category Id</th>
+			<th>Path</th>
+			<th>Name</th>
+			<th>Status</th>
+			<th>Description</th>
+			<th>Created At</th>
+			<th>Updated At</th>
+			<th>EDIT</th>
+			<th>DELETE</th>
+		</tr>
+		<?php foreach ($categories as $categories) : ?>
+		<tr align="center">
+			<td><?php echo $categories->category_id; ?></td>
+			<td><?php echo $categories->path; ?></td>
+			<td><?php echo $categories->name; ?></td>
+			<td><?php echo $categories->getStatusText(); ?></td>
+			<td><?php echo $categories->description; ?></td>
+			<td><?php echo $categories->created_at; ?></td>
+			<td><?php echo $categories->updated_at; ?></td>
+			<td><a href="<?php echo $this->getUrl('edit', null, ['id'=> $categories->category_id], true);?>">EDIT</a></td>
+			<td><a href="<?php echo $this->getUrl('delete', null , ['id'=> $categories->category_id], true);?>">DELETE</a></td>
+		</tr>
+		<?php endforeach; ?>
+	</table>
+</body>
+</html>
