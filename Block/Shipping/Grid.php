@@ -9,7 +9,7 @@ class Block_Shipping_Grid extends Block_Core_Template
 
 	public function getShippings()
 	{
-		$query = "SELECT * FROM `shipping_method` ORDER BY `name` DESC;";
+		$query = "SELECT * FROM `shipping_method`";
 		$shippings =  Ccc::getModel('Shipping')->fetchAll($query);
 		return $shippings->getData();
 	}

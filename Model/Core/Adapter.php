@@ -5,7 +5,7 @@ class Model_Core_Adapter
 		'host' => 'localhost',
 		'username' => 'root',
 		'password' => '',
-		'dbname' => 'project-jay-manek'
+		'dbname' => 'newmvc-jaymanek'
 	];
 
 	public $connect = null;

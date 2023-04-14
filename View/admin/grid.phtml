@@ -2,22 +2,16 @@
 $admins = $this->getAdmins();
 ?>
 
-	<br/>
-	<br/>
 	<table class="manage-table" border="1px">
 		<tr align="center">
 			<td width="70%">MANAGE ADMIN</td>
-			<td><button><a href="<?php echo $this->getUrl('add') ?>">ADD ADMIN</a></button></td>
+			<td><button class="btn btn-primary" type="submit"><a class="btn btn-primary" href="<?php echo $this->getUrl('add') ?>">ADD ADMIN</a></button></td>
 		</tr>
 	</table>
 	<br/>
 	<br/>
-	<table class="grid-table" border="1px">
-		<?php if (!$admins): ?>
-		<tr>
-			<td colspan="8" align="center"><b>No data found.</b></td>
-		</tr>
-		<?php else: ?>
+	<table class="table table-success table-striped">
+		
 		<tr align="center">
 			<th>Admin Id</th>
 			<th>Name</th>

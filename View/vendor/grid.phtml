@@ -1,0 +1,50 @@
+<?php
+$vendors = $this->getVendors();
+?>
+	<table class="manage-table" border="1px">
+		<tr align="center">
+			<td width="70%">MANAGE VENDOR</td>
+			<td><button class="btn btn-primary" type="submit"><a class="btn btn-primary" href="<?php echo $this->getUrl('add') ?>">ADD VENDOR</a></button></td>
+		</tr>
+	</table>
+	<br/>
+	<table class="table table-success table-striped">
+		<?php if (!$vendors): ?>
+		<tr>
+			<td colspan="8" align="center"><b>No data found.</b></td>
+		</tr>
+		<?php else: ?>
+		<tr align="center">
+			<th>Vendor Id</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Email</th>
+			<th>Gender</th>
+			<th>Mobile</th>
+			<th>Company</th>
+			<th>Status</th>
+			<th>Created At</th>
+			<th>Updated At</th>
+			<th>EDIT</th>
+			<th>DELETE</th>
+		</tr>
+		<?php foreach ($vendors as $vendor) : ?>
+		<tr align="center">
+			<td><?php echo $vendor->vendor_id; ?></td>
+			<td><?php echo $vendor->first_name; ?></td>
+			<td><?php echo $vendor->last_name; ?></td>
+			<td><?php echo $vendor->email; ?></td>
+			<td><?php echo $vendor->gender; ?></td>
+			<td><?php echo $vendor->mobile; ?></td>
+			<td><?php echo $vendor->company; ?></td>
+			<td><?php echo $vendor->getStatusText(); ?></td>
+			<td><?php echo $vendor->created_at; ?></td>
+			<td><?php echo $vendor->updated_at; ?></td>
+			<td><a href="<?php echo $this->getUrl('edit', null, ['id'=> $vendor->vendor_id], true);?>">EDIT</a></td>
+			<td><a href="<?php echo $this->getUrl('delete', null , ['id'=> $vendor->vendor_id], true);?>">DELETE</a></td>
+		</tr>
+		<?php endforeach; ?>
+		<?php endif; ?>
+	</table>
+</body>
+</html>

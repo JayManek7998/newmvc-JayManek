@@ -10,7 +10,7 @@ class Block_Category_Grid extends Block_Core_Template
 
 	public function getCategories()
 	{
-		$query = "SELECT * FROM `category` ORDER BY `name` DESC;";
+		$query = "SELECT * FROM `category`";
 		$categories = Ccc::getModel('Category')->fetchAll($query);
 		return $categories->getData();
 	}

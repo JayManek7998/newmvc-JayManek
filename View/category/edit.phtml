@@ -1,5 +1,12 @@
-<?php $category = $this->category; ?>
-
+<?php $category = $this->getCategory()['category'] ?>
+<form action="<?php echo $this->getUrl('save'); ?>" method="post">
+	<br/>
+	<br/>
+	<table class="add-header">
+		<tr align="center">
+			<td><h2>CATEGORY INFORMATION</h2></td>
+		</tr>
+	</table>
 	<br/>
 	<br/>
 	<table class="add-data-table" align="center">

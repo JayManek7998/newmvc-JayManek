@@ -10,7 +10,7 @@ class Block_Salesman_Grid extends Block_Core_Template
 
 	public function getSalesmans()
 	{
-		$query = "SELECT * FROM `salesman` ORDER BY `name` DESC;";
+		$query = "SELECT * FROM `salesman`";
 		$salesmans = Ccc::getModel('Salesman')->fetchAll($query);
 		return $salesmans->getData();
 	}

@@ -2,17 +2,15 @@
 $products = $this->getProducts();
 ?>
 
-	<br/>
-	<br/>
 	<table class="manage-table" border="1px">
 		<tr align="center">
 			<td width="70%">MANAGE PRODUCTS</td>
-			<td><button><a href="<?php echo $this->getUrl('add') ?>">ADD PRODUCT</a></button></td>
+			<td><button class="btn btn-primary" type="submit"><a class="btn btn-primary" href="<?php echo $this->getUrl('add') ?>">ADD PRODUCT</a></button></td>
 		</tr>
 	</table>
 	<br/>
 	<br/>
-	<table class="grid-table" border="1px">
+	<table class="table table-success table-striped">
 		
 		<tr align="center">
 			<th>Product Id</th>

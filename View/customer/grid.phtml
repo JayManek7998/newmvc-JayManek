@@ -1,23 +1,17 @@
 <?php
-$customers = $this->getCollection();
+$customers = $this->getCustomers();
 ?>
 
-	<br/>
-	<br/>
 	<table class="manage-table" border="1px">
 		<tr align="center">
 			<td width="70%">MANAGE CUSTOMER</td>
-			<td><button><a href="<?php echo $this->getUrl()->getUrl('customer','add'); ?>">ADD CUSTOMER</a></button></td>
+			<td><button class="btn btn-primary" type="submit"><a class="btn btn-primary" href="<?php echo $this->getUrl('add') ?>">ADD CUSTOMER</a></button></td>
 		</tr>
 	</table>
 	<br/>
 	<br/>
-	<table class="grid-table" border="1px">
-		<?php if (!$customers): ?>
-		<tr>
-			<td colspan="8" align="center"><b>No data found.</b></td>
-		</tr>
-		<?php else: ?>
+	<table class="table table-success table-striped">
+		
 		<tr align="center">
 			<th>Customer Id</th>
 			<th>First Name</th>
@@ -31,7 +25,7 @@ $customers = $this->getCollection();
 			<th>DELETE</th>
 			<th>ADDRESS</th>
 		</tr>
-		<?php foreach ($customers->getData() as $customer) : ?>
+		<?php foreach ($customers as $customer) : ?>
 		<tr align="center">
 			<td><?php echo $customer->customer_id; ?></td>
 			<td><?php echo $customer->first_name; ?></td>
@@ -41,13 +35,12 @@ $customers = $this->getCollection();
 			<td><?php echo $customer->mobile; ?></td>
 			<td><?php echo $customer->created_at; ?></td>
 			<td><?php echo $customer->updated_at; ?></td>
-			<td><a href="<?php echo $this->getUrl()->getUrl('customer','edit',['customer_id'=>$row->customer_id]);?>">EDIT</a></td>
-			<td><a href="<?php echo $this->getUrl()->getUrl('customer','delete',['customer_id'=>$row->customer_id]);?>">DELETE</a></td>
-			<td><a href="<?php echo $this->getUrl()->getUrl('customer_Address','grid',['customer_id'=>$row->customer_id]);?>">VIEW ADDRESS</a>
+			<td><a href="<?php echo $this->getUrl('edit', null, ['id'=> $customer->customer_id], true);?>">EDIT</a></td>
+			<td><a href="<?php echo $this->getUrl('delete', null , ['id'=> $customer->customer_id], true);?>">DELETE</a></td>
+			<td><a href="<?php echo $this->getUrl('customer_Address',null,['customer_id'->customer_id]),true;?>">VIEW ADDRESS</a>
 			</td>
 		</tr>
 		<?php endforeach; ?>
-		<?php endif; ?>
 	</table>
 </body>
 </html>

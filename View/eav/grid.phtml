@@ -1,41 +1,44 @@
 <?php
-$attributes = $this->attributes;
+$eavAttributes = $this->getEavAttributes(); 
 ?>
-
-	<br/>
-	<br/>
-	<table class="manage-table" border="1px">
+<table class="manage-table" border="1px">
 		<tr align="center">
-			<td width="70%">MANAGE ATRIBUTES</td>
-			<td><button><a href="<?php echo $this->getUrl('add', null , [], true);?>" style="text-decoration: none;">ADD ATTRIBUTE</a></button></td>
+			<td width="70%">MANAGE EAV ATTRIBUTE</td>
+			<td><button class="btn btn-primary" type="submit"><a class="btn btn-primary" href="<?php echo $this->getUrl('add') ?>">ADD EAV ATTRIBUTE</a></button></td>
 		</tr>
 	</table>
 	<br/>
 	<br/>
-	<table class="grid-table" border="1px">
+	<table class="table table-success table-striped">
 		
 		<tr align="center">
-			<th>Attribute Id</th>
-			<th>Entity_type_id</th>
-			<th>Code</th>
-			<th>Backend Type</th>
-			<th>Name</th>
-			<th>Status</th>
-			<th>Backend Model</th>
-			<th>Input Type</th>
-		</tr>
-		<?php foreach ($attributes as $attributes): ?>
-		<tr align="center">
-			<td><?php echo $attributes->attribute_id; ?></td>
-			<td><?php echo $attributes->entity_type_id; ?></td>
-			<td><?php echo $attributes->code; ?></td>
-			<td><?php echo $attributes->backend_type; ?></td>
-			<td><?php echo $attributes->name; ?></td>
-			<td><?php echo $attributes->getStatusText(); ?></td>
-			<td><?php echo $attributes->backend_model; ?></td>
-			<td><?php echo $attributes->input_type; ?></td>
-		</tr>
-		<?php endforeach; ?>
-	</table>
-</body>
-</html>
+				<th>Attribute Id</th>
+				<th>Entity Type Id</th>
+				<th>Code</th>
+				<th>Backend Type</th>
+				<th>name</th>
+				<th>status</th>
+				<th>Backend Model</th>
+				<th>Input Type</th>
+				<th>Edit</th>
+				<th>Delete</th>
+
+			</tr>
+			
+			<?php foreach ($eavAttributes as $EavAttribute):  ?>
+			<tr align="center">
+				<td><?php  echo $EavAttribute->attribute_id;?> </td>
+				<td><?php echo $EavAttribute->entity_type_id;?></td>
+				<td><?php echo $EavAttribute->code;?></td>
+				<td><?php echo $EavAttribute->backend_type;?></td>
+				<td><?php echo $EavAttribute->name;?></td>
+				<td><?php echo $EavAttribute->getstatustext();?></td>
+				<td><?php echo $EavAttribute->backend_model;?></td>
+				<td><?php echo $EavAttribute->inputtype;?></td>
+				<td><a href="<?php echo $this->getUrl('edit',null,
+				['id'=>$EavAttribute->attribute_id],true);?>">Edit</a></td>
+				<td><a href="<?php echo $this->getUrl('delete',null,['id'=>$EavAttribute->attribute_id],true);?>">Delete</a></td>
+				
+			</tr>
+			<?php endforeach;?>
+		</table>

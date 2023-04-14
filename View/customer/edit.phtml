@@ -1,9 +1,8 @@
 <?php 
-	$customer = $this->createChild()->getData(); 
+	$customer = $this->getCustomer()['customer']; ; 
 ?>
 
 <form action="<?php echo $this->getUrl('save'); ?>" method="post">
-	<?php $this->setTemplate('html/header.phtml')->render();?>
 	<br/>
 	<br/>
 	<table class="add-header">
@@ -30,7 +29,7 @@
 			<td>Gender</td>
 			<td>
 				<select name="customer[gender]">
-					<?php foreach ($customer->getGenderText() as $key => $value) : ?>
+					<?php foreach ($customer->getGenderOptions() as $key => $value) : ?>
 					<?php $selected = ($key == $customer->getGender()) ? "selected" : ''; ?>
 					<option value="<?php echo $key; ?>" <?php echo $selected;?>><?php echo $value; ?></option>
 					<?php endforeach; ?>
@@ -56,7 +55,6 @@
 			<td colspan="2"><button><a href="<?php echo $this->getUrl('grid', null, [], true); ?>">Cancel</a></button>
 			<button type="submit">Submit</button></td>
 		</tr>
-		<?php require_once 'View\customer_address\edit.phtml'; ?>
 	</table>
 </form>
 </body>
